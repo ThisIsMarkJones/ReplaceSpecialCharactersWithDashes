@@ -1,0 +1,51 @@
+@isTest
+public class ReplaceSpecialCharactersWithDashesTest {
+
+    // Test method to verify replacing special characters with dashes
+    @isTest
+    static void testReplaceSpecialChars() {
+        // Create a list of Request objects for testing
+        List<ReplaceSpecialCharactersWithDashes.Request> requests = new List<ReplaceSpecialCharactersWithDashes.Request>();
+        
+        // Create and set inputText directly
+        ReplaceSpecialCharactersWithDashes.Request request1 = new ReplaceSpecialCharactersWithDashes.Request();
+        request1.inputText = 'Hello, World!';
+        requests.add(request1);
+
+        ReplaceSpecialCharactersWithDashes.Request request2 = new ReplaceSpecialCharactersWithDashes.Request();
+        request2.inputText = '1234567890';
+        requests.add(request2);
+
+        ReplaceSpecialCharactersWithDashes.Request request3 = new ReplaceSpecialCharactersWithDashes.Request();
+        request3.inputText = 'Test-String_With*Various&Characters';
+        requests.add(request3);
+
+        ReplaceSpecialCharactersWithDashes.Request request4 = new ReplaceSpecialCharactersWithDashes.Request();
+        request4.inputText = '';
+        requests.add(request4);
+
+        // Call the method to be tested
+        List<ReplaceSpecialCharactersWithDashes.Response> responses = ReplaceSpecialCharactersWithDashes.replaceSpecialChars(requests);
+        
+        // Assert statements to verify the outcome
+        System.assertEquals('Hello--World-', responses[0].outputText, 'Special characters should be replaced by dashes');
+        System.assertEquals('1234567890', responses[1].outputText, 'Alphanumeric characters should remain unchanged');
+        System.assertEquals('Test-String-With-Various-Characters', responses[2].outputText, 'Non-hyphen special characters should be replaced by dashes');
+        System.assertEquals('', responses[3].outputText, 'Empty string should return an empty response');
+    }
+
+    // Additional test to verify null handling
+    @isTest
+    static void testNullInput() {
+        List<ReplaceSpecialCharactersWithDashes.Request> requests = new List<ReplaceSpecialCharactersWithDashes.Request>();
+        ReplaceSpecialCharactersWithDashes.Request requestNull = new ReplaceSpecialCharactersWithDashes.Request();
+        requestNull.inputText = null;
+        requests.add(requestNull);
+        
+        // Call the method to be tested
+        List<ReplaceSpecialCharactersWithDashes.Response> responses = ReplaceSpecialCharactersWithDashes.replaceSpecialChars(requests);
+        
+        // Assert statements to verify the outcome
+        System.assertEquals(null, responses[0].outputText, 'Null input should return null output');
+    }
+}
