@@ -1,0 +1,30 @@
+public class ReplaceSpecialCharactersWithDashes {
+    // Define a class to handle input
+    public class Request {
+        @InvocableVariable(label='Input Text' description='Text to process')
+        public String inputText;
+    }
+
+    // Define a class to handle output
+    public class Response {
+        @InvocableVariable(label='Processed Text')
+        public String outputText;
+    }
+
+    // Invocable method to replace special characters
+    @InvocableMethod(label='Replace Special Characters' description='Replaces all special characters except hyphens with a hyphen in the given text.')
+    public static List<Response> replaceSpecialChars(List<Request> requests) {
+        List<Response> responses = new List<Response>();
+        for (Request request : requests) {
+            Response response = new Response();
+            // Check if inputText is null before replacing characters
+            if (request.inputText != null) {
+                response.outputText = request.inputText.replaceAll('[^a-zA-Z0-9-]', '-');
+            } else {
+                response.outputText = null; // Explicitly set to null if inputText is null
+            }
+            responses.add(response);
+        }
+        return responses;
+    }
+}
