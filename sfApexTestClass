@@ -2,9 +2,9 @@
 public class ReplaceSpecialCharactersWithDashesTest {
 
     // Test method to verify replacing special characters with dashes
-    @isTest
-    static void testReplaceSpecialChars() {
-        // Create a list of Request objects for testing
+    private static testMethod void testReplaceSpecialChars(){
+        test.starttest();
+        // Create a list of Request objects for testing 
         List<ReplaceSpecialCharactersWithDashes.Request> requests = new List<ReplaceSpecialCharactersWithDashes.Request>();
         
         // Create and set inputText directly
@@ -32,11 +32,12 @@ public class ReplaceSpecialCharactersWithDashesTest {
         System.assertEquals('1234567890', responses[1].outputText, 'Alphanumeric characters should remain unchanged');
         System.assertEquals('Test-String-With-Various-Characters', responses[2].outputText, 'Non-hyphen special characters should be replaced by dashes');
         System.assertEquals('', responses[3].outputText, 'Empty string should return an empty response');
+        test.stoptest();        
     }
 
     // Additional test to verify null handling
-    @isTest
-    static void testNullInput() {
+    private static testMethod void testNullInput(){
+        test.starttest();        
         List<ReplaceSpecialCharactersWithDashes.Request> requests = new List<ReplaceSpecialCharactersWithDashes.Request>();
         ReplaceSpecialCharactersWithDashes.Request requestNull = new ReplaceSpecialCharactersWithDashes.Request();
         requestNull.inputText = null;
@@ -47,5 +48,6 @@ public class ReplaceSpecialCharactersWithDashesTest {
         
         // Assert statements to verify the outcome
         System.assertEquals(null, responses[0].outputText, 'Null input should return null output');
+        test.stoptest();
     }
 }
