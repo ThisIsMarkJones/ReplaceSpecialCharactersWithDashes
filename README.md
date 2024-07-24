@@ -1,4 +1,4 @@
-# ReplaceSpecialCharactersWithDashes
+# Replace Special Characters With Dashes
 
 This Salesforce Apex utility class provides functionality to sanitize input text by replacing special characters with dashes, except for hyphens which are retained. The class is designed to be used in Salesforce processes where such text manipulations are needed, especially in formatting fields for consistent data entry or storage.
 
